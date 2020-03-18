@@ -1,0 +1,71 @@
+import "dart:io";
+
+
+class Techhub {
+String name;
+String interest;
+String catageory; // "Learner" or "Mentor"
+int stime,etime; 
+
+ Techhub(String name) {
+    this.name = name;
+  }
+
+  Void setMentorOrLearner() {
+    print(" 1.Mentor  2.Learner  \n Enter catageory ");
+    String catageory = stdin.readLineSync();
+     }
+
+  Void setTimeAvailable() {
+   print("\n Enter when you will be available . Use 24 hour format ");
+   print("\n Enter starting time ");
+   int stime = int.parse(stdin.readLineSync());
+   print("\n Enter end time ");
+   int etime = int.parse(stdin.readLineSync());
+    
+    }
+
+   void addStacks() {
+    print("\n Enter your interest: ");
+    String interest = stdin.readLineSync();
+   }
+
+
+}
+List listMentor <String>[]
+ main() {
+
+    String choice;
+
+    do {
+    print(" Enter name: "); 
+    String myname = stdin.readLineSync();
+
+    Techhub person = Techhub(myname);
+    person.setMentorOrLearner();
+    person.addStacks();
+
+    if(person.catageory == "Mentor"){
+      person.setAvailableTime();
+    }
+
+    listMentor.add(person);
+
+    int mystime, myetime;
+    
+    if(person.catageory == "Learner"){
+    print("\n Enter the time range when you'll be available .  Use 24hr format.");
+    print("\n Starting time: ");
+    mystime = int.parse(stdin.readLineSync());
+    print(" Ending time: ");
+    myetime = int.parse(stdin.readLineSync());
+    person.getMentor(listPerson,mystime,myetime);
+    }
+
+    print("\n Do you wish to add another profile? (Yes/No): ");
+    choice = stdin.readLineSync();
+
+
+    } while (choice == "Yes");
+    
+}
